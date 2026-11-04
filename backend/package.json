@@ -1,0 +1,18 @@
+{
+  "name": "ak-career",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AK CAREER API: JWT accounts and Postgres persistence. Deploy on Render with a Supabase database.",
+  "engines": {
+    "node": ">=18.18"
+  },
+  "scripts": {
+    "start": "node server/index.mjs",
+    "local": "node server/index.mjs",
+    "test": "node dev/smoke.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}

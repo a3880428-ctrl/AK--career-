@@ -1,0 +1,24 @@
+# Render Blueprint (New → Blueprint → this repo). Backend only; the frontend is on Netlify.
+services:
+  - type: web
+    name: ak-career-api
+    runtime: node
+    plan: free                       # sleeps after 15 min idle; "starter" stays awake
+    rootDir: backend
+    buildCommand: npm install --omit=dev
+    startCommand: node server/index.mjs
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true          # strong random secret, created by Render
+      - key: DATABASE_URL
+        sync: false                  # your Supabase "Session pooler" connection string
+      - key: SIGNUP_CODE
+        sync: false                  # a phrase only you know; needed to create an account
+      - key: ALLOWED_ORIGINS
+        sync: false                  # your Netlify address, e.g. https://ak-career.netlify.app  (or * to allow any)

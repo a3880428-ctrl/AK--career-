@@ -1,0 +1,3 @@
+# Netlify: frontend only. If deploying from GitHub, set Base directory = frontend (publish is this folder).
+[build]
+  publish = "."
